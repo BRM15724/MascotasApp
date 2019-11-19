@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Camera} from '@ionic-native/camera/ngx';
 
+import { Flashlight } from '@ionic-native/flashlight/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,7 @@ import { Camera} from '@ionic-native/camera/ngx';
     FormsModule,
     ReactiveFormsModule,
     Camera,
+    Flashlight,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
