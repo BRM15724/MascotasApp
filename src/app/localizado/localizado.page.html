@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Localizado</ion-title>
+    <ion-title>Localizados</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list *ngFor="let mascota of mascotas">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>¿Lo reconoces?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+                <ion-col size="12">
+                  <ion-img src="{{mascota.imagen}}"></ion-img>
+                  <ion-text class="text_important">{{mascota.descripcion}}</ion-text>
+                  <a></a>
+                  <ion-text>{{mascota.lat}} , {{mascota.lng}}</ion-text>
+                </ion-col>
+          </ion-card-content>
+        </ion-card>
+  </ion-list>
 
+<ion-fab vertical="bottom" horizontal="end"  slot="fixed">
+<ion-fab-button (click)="AgregarMascota()"> 
+  <ion-icon name="add"></ion-icon>
+</ion-fab-button>
+</ion-fab>
 </ion-content>

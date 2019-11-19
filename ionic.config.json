@@ -1,5 +1,7 @@
 {
   "name": "MascotasApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
