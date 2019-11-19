@@ -10,6 +10,12 @@ const routes: Routes = [
     path: 'modal-loc',
     loadChildren: () => import('./modal-loc/modal-loc.module').then( m => m.ModalLocPageModule)
   },
+  /*
+  {
+    path: 'modal-sol',
+    loadChildren: () => import('./modal-sol/modal-sol.module').then( m => m.ModalSolPageModule)
+  },
+*/
 /*
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},

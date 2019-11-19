@@ -1,11 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Mascotas en Adopcion</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- 
+  <ion-list *ngFor="let mascota of mascotas">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{mascota.nombre}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-img class="imagenAdopcion" src="{{mascota.imagen}}"></ion-img>
+                </ion-col>
+                <ion-col class="centrado">
+                  <ion-text class="text_important">Tipo: {{mascota.tipo}}</ion-text>
+                  <br>
+                  <ion-text class="text_important">Raza: {{mascota.raza}}  </ion-text>
+                  <br>
+                  <ion-text class="text_important">Color: {{mascota.color}}  </ion-text>
+                  <br>
+                  <ion-text class="text_important">Edad: {{mascota.edad}}  </ion-text>
+                  <ion-button size="small" (click)="EnviaSolicitud()">Solicitud</ion-button>
+                  <ion-button size="small" (click)="sonido(mascota)">
+                    <ion-icon name="volume-high"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+  </ion-list>
 </ion-content>

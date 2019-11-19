@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Localizados</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,8 +14,7 @@
                 <ion-col size="12">
                   <ion-img src="{{mascota.imagen}}"></ion-img>
                   <ion-text class="text_important">{{mascota.descripcion}}</ion-text>
-                  <a></a>
-                  <ion-text>{{mascota.lat}} , {{mascota.lng}}</ion-text>
+                  <hr> <ion-text>Ubicacion:  {{mascota.lat}} , {{mascota.lng}}</ion-text>
                 </ion-col>
           </ion-card-content>
         </ion-card>

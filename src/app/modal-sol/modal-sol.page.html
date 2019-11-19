@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title class="ion-text-center">Solicitud de adopcion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <ion-content padding>
+      <form [formGroup]="addForm" (ngSubmit)="enviar(addForm.value)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
+                <ion-item>
+                  <ion-input formControlName="nombre" type="text" placeholder="Nombre Pila"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="apellidoP" type="text" placeholder="Apellido Paterno"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="apellidoM" type="text" placeholder="Apellido Materno"></ion-input>
+                </ion-item>
+
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                        <br>
+                        <ion-text>Patio</ion-text>
+                    </ion-col>
+                    <ion-col>
+                        <ion-segment formControlName="patio">
+                            <ion-segment-button value="1">
+                              <ion-label>Si</ion-label>
+                            </ion-segment-button>
+                            <ion-segment-button value="2">
+                              <ion-label>No</ion-label>
+                            </ion-segment-button>
+                          </ion-segment>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <ion-item>
+                    <ion-input formControlName="numMascotas" type="number" placeholder="Numero de Mascotas"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="correo" type="text" placeholder="Correo"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="telefono" type="number" placeholder="Telefono"></ion-input>
+                </ion-item>
+              </div>
+              <div class="BotonesArea">
+                  <div class="divButton">
+                      <ion-button (click)="salirAdd()" color="danger" size="medium">Cancelar</ion-button>
+                    </div >
+                    <div class="divButton">
+                      <ion-button color="success" size="medium" [disabled]="addForm.invalid" type="submit">Agregar</ion-button>
+                    </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-content>
+  </ion-content>
