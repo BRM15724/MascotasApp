@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title class="ion-text-center">Mascota Localizada</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <form [formGroup]="addForm">
+      <ion-item>
+        <ion-input formControlName="descripcion" type="text" placeholder="Descripción"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select placeholder="Tipo" formControlName="tipo">
+          <ion-select-option *ngFor="let Tipos of TiposMascotas" [value]="Tipos.tipo">{{Tipos.tipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="contacto" type="text" placeholder="Correo / numero"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngIf="image">
+              <img [src]="image" alt="image">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item> 
+      <br>
+      <ion-button (click)="takePicture()">Tomar Foto</ion-button>
+
+      <div #map_canvas id="map_canvas">
+        <ion-button ion-button end (click)="onButtonClick()">Mi ubicacion</ion-button>
+      </div>
+
+      <div class="divButton">
+        <ion-button (click)="salirAdd()" color="danger" size="medium">Cancelar</ion-button>
+      </div >
+      <div class="divButton">
+        <ion-button color="success" size="medium" [disabled]="addForm.invalid" type="submit">Agregar</ion-button>
+      </div>
+    </form>
+  </ion-content>

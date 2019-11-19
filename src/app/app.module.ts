@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { Camera} from '@ionic-native/camera/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SplashScreen,
     FormsModule,
     ReactiveFormsModule,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

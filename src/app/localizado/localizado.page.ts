@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-localizado',
@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class LocalizadoPage implements OnInit {
   public mascotas;
-  constructor( private modalControl: ModalController) { }
+  constructor( public navCtrl: NavController ) { }
 
   ngOnInit() {
     this.mascotas = [
@@ -37,6 +37,10 @@ export class LocalizadoPage implements OnInit {
         imagen: './assets/mascota4.jpg',
       }
     ];
+  }
+
+async  AgregarMascota() {
+  this.navCtrl.navigateRoot('modal-loc');
   }
 
 }
