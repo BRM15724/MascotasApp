@@ -5,7 +5,12 @@
 </ion-header>
 
 <ion-content>
-    <ion-item class="switch">
-      <ion-toggle color="primary" (ionChange)="switchFlash($event)"></ion-toggle>
-    </ion-item>
+    <label>
+        <input type="checkbox" (change)="switchFlash( $event )" />
+        <div>
+          <span class="on">On</span>
+          <span class="off">Off</span>
+        </div>  
+        <i></i>
+      </label>
   </ion-content>
