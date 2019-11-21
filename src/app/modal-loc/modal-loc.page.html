@@ -5,7 +5,7 @@
   </ion-header>
   
   <ion-content class="ion-padding">
-    <form [formGroup]="addForm">
+    <form [formGroup]="addForm" (ngSubmit)="enviarSolicitud(addForm.value)">
       <ion-item>
         <ion-input formControlName="descripcion" type="text" placeholder="Descripción"></ion-input>
       </ion-item>
@@ -20,18 +20,11 @@
       <ion-item>
         <ion-input formControlName="contacto" type="text" placeholder="Correo / numero"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col *ngIf="image">
-              <img [src]="image" alt="image">
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item> 
+      <div>
+        <ion-button (click)="takePicture()">Foto</ion-button>
+        <img *ngIf="image" [src]="image" alt="image">
+      </div>
       <br>
-      <ion-button (click)="takePicture()">Tomar Foto</ion-button>
 
       <div #map_canvas id="map_canvas">
         <ion-button ion-button end (click)="onButtonClick()">Mi ubicacion</ion-button>

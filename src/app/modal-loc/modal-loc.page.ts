@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import { Camera , CameraOptions } from '@ionic-native/camera/ngx';
 import { ToastController, Platform, LoadingController } from '@ionic/angular';
 import { async } from '@angular/core/testing';
 import {
@@ -26,6 +26,9 @@ export class ModalLocPage implements OnInit {
 
   map: GoogleMap;
   loading: any;
+  latitud: any;
+  longitud: any;
+
 
   public TiposMascotas;
 
@@ -40,8 +43,6 @@ export class ModalLocPage implements OnInit {
                   descripcion: ['', Validators.required],
                   tipo: ['', Validators.required],
                   contacto: ['', Validators.required],
-                  latitud: '',
-                  longitud: '',
                 });
               }
 
@@ -60,25 +61,36 @@ export class ModalLocPage implements OnInit {
     ];
   }
 
+async enviarSolicitud( datos ) {
+      const alert = await this.alertController.create({
+        header: 'Alerta enviada',
+        subHeader: 'Se analizara la informacion para ser publicada:',
+        message: 'Se extravio un ' + datos.tipo + '.<br/>Contacto: ' + datos.contacto + '.<br/>Zona: ' +
+        this.latitud + ' , ' + this.longitud + '',        buttons: ['OK']
+      });
+
+      await alert.present();
+      this.navCtrl.navigateRoot('tabs/localizado');
+  }
+
   salirAdd() {
     this.navCtrl.navigateRoot('tabs/localizado');
   }
 
   takePicture() {
     const options: CameraOptions = {
-      quality: 50,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.CAMERA
     };
     this.camera.getPicture(options)
-      .then((imageData) => {
-         this.image = 'data: image/jpeg;base64,' + ImageData;
-      }, (err) => {
-        console.log(err);
-      }
-      );
+    .then((imageData) => {
+      this.image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   loadMap() {
@@ -107,6 +119,9 @@ export class ModalLocPage implements OnInit {
     this.map.getMyLocation().then((location: MyLocation) => {
       this.loading.dismiss();
       console.log(JSON.stringify(location, null , 2));
+      console.log(location.latLng.lat);
+      this.latitud = location.latLng.lat;
+      this.longitud = location.latLng.lng;
 
       // Move the map camera to the location with animation
       this.map.animateCamera({

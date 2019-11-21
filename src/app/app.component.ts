@@ -20,7 +20,11 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      /*this.statusBar.styleDefault();    Lo elimine para personalizar la barra de estado     */
+      if (this.platform.is('android')) {
+        this.statusBar.overlaysWebView(true);
+        this.statusBar.backgroundColorByHexString('#007ac1');
+      }
       this.splashScreen.hide();
     });
   }

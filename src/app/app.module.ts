@@ -6,11 +6,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { Camera} from '@ionic-native/camera/ngx';
 
 import { Flashlight } from '@ionic-native/flashlight/ngx';
 
@@ -25,9 +26,10 @@ import { Flashlight } from '@ionic-native/flashlight/ngx';
     FormsModule,
     ReactiveFormsModule,
     Camera,
+    WebView,
     Flashlight,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+  export class AppModule {}
